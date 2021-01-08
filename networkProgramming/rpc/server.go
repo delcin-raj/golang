@@ -35,13 +35,20 @@ func(t* WebService) SayHello(args *types.Name,res *string) error {
 
 func main() {
 	server := new(WebService)
+	// server.Multiply, WebService.Multiply()
 	rpc.Register(server)
+	// Server Procedure Stubs
+	// m := map("WebService" -> server)
+	// client is making a request for "WebService.Multiply" --> "WebService" "Multiply"
+	// m["WebService"].Multiply(args,res) 
 	rpc.HandleHTTP()
 
+	fmt.Println("Service has started, waiting for request ....")
 	err := http.ListenAndServe(":1234",nil)
 	if err != nil {
 		fmt.Println(err.Error)
 	}
+	// if client makes Multiply request the rpc package will call server.Multiply()
 }
 
 

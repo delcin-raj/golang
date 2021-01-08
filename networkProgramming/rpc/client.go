@@ -7,6 +7,7 @@ import (
 	"check"
 )
 
+// You have not understood anything bye
 func main() {
 	client,err := rpc.DialHTTP("tcp","localhost:1234")
 	check.Err(err)
